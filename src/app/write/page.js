@@ -3,7 +3,7 @@ import postNote from "./postNote";
 
 export default async function WritePage(){
     async function getUsers(){
-        const db = AsyncDatabase.open("./notes.db");
+        const db = await AsyncDatabase.open("./notes.db");
         return db.all("SELECT * FROM users");
     }
 
@@ -25,7 +25,7 @@ export default async function WritePage(){
                     </label>
                     <label>
                         To
-                        <select name="to_user">
+                        <select name="to_user" defaultValue={2}>
                         {users.map((user) => (
                             <option key={user.id} value={user.id}>
                                 {user.name}
